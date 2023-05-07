@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 
@@ -10,9 +9,11 @@ function App() {
   const [response, setResponse] = useState("")
 
   const sendRequest = async () => {
+    setResponse("Loading...")
     try {
       const res = await fetch(url, {
-        method
+        method,
+        body: body ? JSON.parse(body) : undefined
 
       })
       const data = await res.json()
@@ -28,7 +29,8 @@ function App() {
     <>
       <nav className="navbar bg-body-tertiary">
         <div className="container-fluid">
-          <span className="navbar-brand mb-0 h1">v-api</span>
+          <span className="navbar-brand mb-0 h1 mx-2">v-api</span>
+          <a target='_blank' rel="noreferrer" href="https://github.com/Vishesh-Pandey/v-api" className="btn btn-outline-dark">Code</a>
         </div>
       </nav>
 
@@ -85,7 +87,10 @@ function App() {
         </div>
         <div className="row">
           <div className="col">
-            {response}
+            <div className="form-floating">
+              <textarea className='form-control' value={response} style={{ height: "50vh" }}></textarea>
+              <label htmlFor="response">Response</label>
+            </div>
           </div>
         </div>
       </div>
