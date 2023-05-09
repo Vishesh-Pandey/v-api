@@ -21,6 +21,7 @@ function App() {
       setResponse(JSON.stringify(data, null, 2))
     } catch (error) {
       console.log(error)
+      setResponse("Unable to fetch data. Error: " + error)
     }
   }
 
@@ -34,11 +35,10 @@ function App() {
         </div>
       </nav>
 
-      <div className="container">
+      <div className="container py-2">
         <div className="row">
           <div className="col-2">
             <select value={method} onChange={(e) => setMethod(e.target.value)} className="form-select" >
-
               <option value="GET">GET</option>
               <option value="POST">POST</option>
               <option value="PUT">PUT</option>
@@ -68,7 +68,7 @@ function App() {
 
           </div>
         </div>
-        <div className="row">
+        <div className="row my-2">
           <div className="col">
             <div className="form-floating">
               <textarea
